@@ -1,31 +1,79 @@
-var currentEntry = []; // push number to array when pressed
-var currentExpression = [];
+$( document ).ready(function() {
+var currentEntry = ""; // push number to array when pressed
+var currentExpression = "";
+var displayEntry;
+var displayExpression;
 
 function calculate (input) {
   "use strict";
-  //TODO Switch cases for all the various inputs possible
+  switch (true) {
+    case /[0-9]/.test(input):
+      currentEntry += input;
+      updateDisplay();
+      break;
+    case /multiply/.test(input):
+      currentExpression += currentEntry + " * ";
+      currentEntry = "";
+      updateDisplay();
+      break;
+    case /divide/.test(input):
+      currentExpression += currentEntry + " / ";
+      currentEntry = "";
+      updateDisplay();
+      break;
+    case /add/.test(input):
+      currentExpression += currentEntry + " + ";
+      currentEntry = "";
+      updateDisplay();
+      break;
+    case /subtract/.test(input):
+      currentExpression += currentEntry + " - ";
+      currentEntry = "";
+      updateDisplay();
+      break;
+    case /equals/.test(input):
+      currentExpression += currentEntry;
+      calculateTotal();
+      break;
+    case /ce/.test(input):
+      currentEntry = "";
+      updateDisplay();
+      break;
+    case /ac/.test(input):
+      currentEntry = "";
+      currentExpression = "";
+      updateDisplay();
+      break;
+  }
+  function updateDisplay (){
+    displayEntry = currentEntry;
+    displayExpression = currentExpression;
+    $('.display').html(displayEntry);
+    $('.displayequation').html(displayExpression);
+  }
+  function calculateTotal(){
+    displayEntry = eval(currentExpression);
+    displayExpression = currentExpression;
+    $('.display').html(displayEntry);
+    $('.displayequation').html(displayExpression);
 
-    function evaluate () {
-      //TODO push last value to current expression
-      return eval(currentExpression);
-    }
-
-    function clearEntry () {
-      currentEntry = [];
-    }
-
-    function clearAll () {
-      currentEntry = [];
-      currentExpression = [];
-    }
+  }
 }
 
-// var x = "5 + 10 * 7";
-// console.log(eval(x));
 
-//TODO Build a function to store the equation (possibly array with push)
-//TODO Calculator should store the number until an expression button is clicked
-//TODO the current expression should also be shown below
-// How this will work. Users will type in a number. When expression button is pressed
-// number and expression will be pushed to an array. This array will be displayed.
-// After the = sign is pressed. The expression will then be passed to be evaluated.
+// calculate(3);
+// calculate(3);
+// calculate("multiply");
+// calculate(3);
+// calculate(4);
+// calculate("divide");
+// calculate(3);
+// calculate(3);
+// calculate("add");
+// calculate("3");
+// calculate("3");
+// calculate("subtract");
+// calculate("3");
+// calculate("equals");
+
+});

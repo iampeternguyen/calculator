@@ -1,0 +1,9 @@
+.fluid-container {
+  margin: 30px;
+}
+.calcbutton {
+  background-color: lightgrey;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+}
