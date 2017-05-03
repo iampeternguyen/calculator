@@ -21,21 +21,26 @@ html, body {
 .display {
   height:50px;
   max-height:50px;
+  font-size: 300%;
 }
 
 .displayequation {
   height:30px;
   max-height:30px;
+  padding-right: 5px;
 }
 
 .btn {
   height:75px;
   width:75px;
+  font-size: 180% !important;
 }
 .CE, .AC {
   background-color: #EE0C4E;
   color:white;
   height:30px;
+  font-size: 110% !important;
+
 }
 /*.equals {
   background-color: #3B3364;

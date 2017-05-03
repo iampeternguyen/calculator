@@ -3,39 +3,69 @@ var currentExpression = "";
 var displayEntry;
 var displayExpression;
 var done=false;
+//TODO make symbols clearer
+//TODO fix rounding
 function calculate (input) {
   "use strict";
   switch (true) {
     case /[0-9]/.test(input):
-      if (input===0 && currentEntry===""){
+      if (input===0 && currentEntry==="0"){
 
-      } else if (done){} else {
+      }
+      else if (done){}
+      else {
       currentEntry += input;
       updateDisplay();}
       break;
     case /multiply/.test(input):
-      if (currentEntry ==="" || done) {}
+      if (currentEntry ==="") {}
+      else if (done) {
+        done=false;
+        currentExpression ="";
+        currentExpression += currentEntry + " * ";
+        currentEntry = "";
+        updateDisplay();
+      }
       else {
       currentExpression += currentEntry + " * ";
       currentEntry = "";
       updateDisplay();}
       break;
     case /divide/.test(input):
-      if (currentEntry ==="" || done) {}
+      if (currentEntry ==="") {}
+      else if (done) {
+        done=false;
+        currentExpression ="";
+        currentExpression += currentEntry + " / ";
+        currentEntry = "";
+        updateDisplay();
+      }
       else {
       currentExpression += currentEntry + " / ";
       currentEntry = "";
       updateDisplay();}
       break;
     case /add/.test(input):
-    if (currentEntry ==="" || done) {}
+    if (currentEntry ==="") {}
+    else if (done) {
+      done=false;
+      currentExpression ="";
+      currentExpression += currentEntry + " + ";
+      currentEntry = "";
+      updateDisplay();}
     else {
       currentExpression += currentEntry + " + ";
       currentEntry = "";
       updateDisplay();}
       break;
     case /subtract/.test(input):
-    if (currentEntry ==="" || done) {}
+    if (currentEntry ==="") {}
+    else if (done) {
+      done=false;
+      currentExpression ="";
+      currentExpression += currentEntry + " - ";
+      currentEntry = "";
+      updateDisplay();}
     else {
       currentExpression += currentEntry + " - ";
       currentEntry = "";
@@ -49,10 +79,10 @@ function calculate (input) {
       break;
     case /ce/.test(input):
       if (done) {
-        currentEntry ="";
-        currentExpression ="";
-        done=false;
-        updateDisplay();
+        // currentEntry ="";
+        // currentExpression ="";
+        // done=false;
+        // updateDisplay();
       } else {
       currentEntry = "";
       updateDisplay();}
@@ -72,17 +102,35 @@ function calculate (input) {
   function updateDisplay (){
     displayEntry = currentEntry;
     displayExpression = currentExpression.replace(/\//gi, '÷').replace(/\*/gi, '×');
-    $('.display').html(displayEntry);
-    $('.displayequation').html(displayExpression);
+    if (currentEntry ==="") {
+      $('.display').html("0");
+    }
+    else {
+       $('.display').html(displayEntry);
+     }
+     if (currentExpression ==="") {
+        $('.displayequation').html("0");
+     } else {
+        $('.displayequation').html(displayExpression);
+     }
+
   }
   function calculateTotal(){
+
     displayExpression = currentExpression.replace(/\//gi, '÷').replace(/\*/gi, '×');
-    displayEntry = eval(currentExpression);
+    displayEntry = round(eval(currentExpression), 4);
+    currentEntry = displayEntry;
+    if (displayEntry == "Infinity") {
+      displayEntry = "Error";
+    }
     $('.display').html(displayEntry);
     $('.displayequation').html(displayExpression);
     done=true;
 
   }
+  function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
 }
 
 
