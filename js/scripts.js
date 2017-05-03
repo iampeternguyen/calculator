@@ -1,61 +1,86 @@
-$( document ).ready(function() {
 var currentEntry = ""; // push number to array when pressed
 var currentExpression = "";
 var displayEntry;
 var displayExpression;
-
+var done=false;
 function calculate (input) {
   "use strict";
   switch (true) {
     case /[0-9]/.test(input):
+      if (input===0 && currentEntry===""){
+
+      } else if (done){} else {
       currentEntry += input;
-      updateDisplay();
+      updateDisplay();}
       break;
     case /multiply/.test(input):
+      if (currentEntry ==="" || done) {}
+      else {
       currentExpression += currentEntry + " * ";
       currentEntry = "";
-      updateDisplay();
+      updateDisplay();}
       break;
     case /divide/.test(input):
+      if (currentEntry ==="" || done) {}
+      else {
       currentExpression += currentEntry + " / ";
       currentEntry = "";
-      updateDisplay();
+      updateDisplay();}
       break;
     case /add/.test(input):
+    if (currentEntry ==="" || done) {}
+    else {
       currentExpression += currentEntry + " + ";
       currentEntry = "";
-      updateDisplay();
+      updateDisplay();}
       break;
     case /subtract/.test(input):
+    if (currentEntry ==="" || done) {}
+    else {
       currentExpression += currentEntry + " - ";
       currentEntry = "";
-      updateDisplay();
+      updateDisplay();}
       break;
     case /equals/.test(input):
+    if (currentEntry ==="" || done) {}
+    else {
       currentExpression += currentEntry;
-      calculateTotal();
+      calculateTotal();}
       break;
     case /ce/.test(input):
+      if (done) {
+        currentEntry ="";
+        currentExpression ="";
+        done=false;
+        updateDisplay();
+      } else {
       currentEntry = "";
-      updateDisplay();
+      updateDisplay();}
       break;
     case /ac/.test(input):
       currentEntry = "";
       currentExpression = "";
+      done=false;
       updateDisplay();
+      break;
+    case /decimal/.test(input):
+      if (/\./gi.test(currentEntry) || done) {} else {
+      currentEntry += ".";
+      updateDisplay();}
       break;
   }
   function updateDisplay (){
     displayEntry = currentEntry;
-    displayExpression = currentExpression;
+    displayExpression = currentExpression.replace(/\//gi, '÷').replace(/\*/gi, '×');
     $('.display').html(displayEntry);
     $('.displayequation').html(displayExpression);
   }
   function calculateTotal(){
+    displayExpression = currentExpression.replace(/\//gi, '÷').replace(/\*/gi, '×');
     displayEntry = eval(currentExpression);
-    displayExpression = currentExpression;
     $('.display').html(displayEntry);
     $('.displayequation').html(displayExpression);
+    done=true;
 
   }
 }
@@ -75,5 +100,3 @@ function calculate (input) {
 // calculate("subtract");
 // calculate("3");
 // calculate("equals");
-
-});

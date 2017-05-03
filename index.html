@@ -13,84 +13,83 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Flowtype.js/1.1.0/flowtype.min.js"></script>
+  <script src="js/scripts.js"></script>
 
 </head>
 
-<body>
-  <script src="js/scripts.js"></script>
+<body><center>
+<div class="all">
   <div class="fluid-container">
     <div class="calculator">
       <div class="row display well text-right">
-        This is where currentEntry goes.
       </div>
       <div class="row displayequation text-right">
-        This is where the equation log goes.
       </div>
       <div class="row">
-        <button class="col-xs-6 calcbutton AC">
+        <button class="btn col-xs-6 calcbutton AC btn-danger" onclick="calculate('ac')">
           AC
         </button>
 
-        <button class="col-xs-6 calcbutton CE">
+        <button class="btn col-xs-6 calcbutton CE btn-danger" onclick="calculate('ce')">
           CE
         </button>
       </div>
       <div class="row">
-        <button class="col-xs-3 calcbutton seven"  onclick="calculate(7)">
+        <button class="btn col-xs-3 calcbutton seven numbers btn-default"  onclick="calculate(7)">
           7
         </button>
-        <button class="col-xs-3 calcbutton eight">
+        <button class="btn col-xs-3 calcbutton eight numbers btn-default" onclick="calculate(8)">
           8
         </button>
-        <button class="col-xs-3 calcbutton nine">
+        <button class="btn col-xs-3 calcbutton nine numbers btn-default" onclick="calculate(9)">
           9
         </button>
-        <button class="col-xs-3 calcbutton division">
+        <button class="btn col-xs-3 calcbutton division btn-warning" onclick="calculate('divide')">
           ÷
         </button>
 
       </div>
       <div class="row">
-        <button class="col-xs-3 calcbutton four">
+        <button class="btn col-xs-3 calcbutton four numbers btn-default" onclick="calculate(4)">
           4
         </button>
-        <button class="col-xs-3 calcbutton five">
+        <button class="btn col-xs-3 calcbutton five numbers btn-default" onclick="calculate(5)">
           5
         </button>
-        <button class="col-xs-3 calcbutton six">
+        <button class="btn col-xs-3 calcbutton six numbers btn-default" onclick="calculate(6)">
           6
         </button>
-        <button class="col-xs-3 calcbutton multiply">
+        <button class="btn col-xs-3 calcbutton multiply btn-warning" onclick="calculate('multiply')">
           ×
         </button>
 
       </div>
       <div class="row">
-        <button class="col-xs-3 calcbutton one">
+        <button class="btn col-xs-3 calcbutton one numbers btn-default" onclick="calculate(1)">
           1
         </button>
-        <button class="col-xs-3 calcbutton two">
+        <button class="btn col-xs-3 calcbutton two numbers btn-default" onclick="calculate(2)">
           2
         </button>
-        <button class="col-xs-3 calcbutton three">
+        <button class="btn col-xs-3 calcbutton three numbers btn-default" onclick="calculate(3)">
           3
         </button>
-        <button class="col-xs-3 calcbutton minus">
+        <button class="btn col-xs-3 calcbutton subtract btn-warning" onclick="calculate('subtract')">
           −
         </button>
 
       </div>
       <div class="row">
-        <button class="col-xs-3 calcbutton zero">
+        <button class="btn col-xs-3 calcbutton zero numbers btn-default" onclick="calculate(0)">
           0
         </button>
-        <button class="col-xs-3 calcbutton decimal">
+        <button class="btn col-xs-3 calcbutton decimal btn-default" onclick="calculate('decimal')">
           .
         </button>
-        <button class="col-xs-3 calcbutton equals">
+        <button class="btn col-xs-3 calcbutton equals btn-info" onclick="calculate('equals')">
           =
         </button>
-        <button class="col-xs-3 calcbutton plus">
+        <button class="btn col-xs-3 calcbutton add btn-warning" onclick="calculate('add')">
           +
         </button>
 
@@ -100,6 +99,7 @@
     </div>
 
   </div>
+</div>
 
 </body>
 </html>
